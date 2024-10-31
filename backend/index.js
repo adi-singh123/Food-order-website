@@ -24,8 +24,6 @@
 // const express = require('express');
 // const twilio = require('twilio');
 // const index = require('./index')
-
-// const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
 // const app = express();
 // app.use(express.json());
 
