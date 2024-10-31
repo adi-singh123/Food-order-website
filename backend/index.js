@@ -1,6 +1,6 @@
 // // // Import the Twilio module and initialize the client
 // // const twilio = require('twilio');
-// // const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
+
 
 // // // Example function to send an SMS
 // // async function sendSMS(to, from, body) {
