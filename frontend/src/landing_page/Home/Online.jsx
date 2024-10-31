@@ -1,35 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { MdStars } from "react-icons/md";
+import { Link } from "react-router-dom";
 
-function SomeMore() {
-  const [data,setdata] = useState([]);
-
-  async function etchData(){
-    const data = await fetch("/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const result = await data.json();
-    // console.log(result?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info);
-    setdata(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants);
-  }
-
-  useEffect(()=>{
-    etchData()
-  },[])
-
-
-  return ( 
-    <div className="container">
-      {
-        data.map((item,i)=>(
-          <img
-                src={
-                  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-                  item?.info?.cloudinaryImageId
-                }
-              ></img>
-        ))
-      }
+function SomeMore({ datares }) {
+  return (
+    <div className="container mt-5">
+      <div className="online">
+        {datares.map((item) => (
+          <div>
+            <div className="abc">
+                <img
+                  src={
+                    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                    item?.info?.cloudinaryImageId
+                  }
+                ></img>
+              <div className="again"></div>
+              <p className="sale">
+                {item?.info?.aggregatedDiscountInfoV3?.header +
+                  item?.info?.aggregatedDiscountInfoV3?.subHeader}
+              </p>
+            </div>
+            <div className="detele">
+              <h2>{item?.info?.name}</h2>
+              <p>
+                <MdStars />
+                {item?.info?.avgRating}
+                <span>{item?.info?.sla?.slaString}</span>
+              </p>
+              <p className="itemName">{item?.info?.cuisines.join(" , ")}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-   );
+  );
 }
 
 export default SomeMore;

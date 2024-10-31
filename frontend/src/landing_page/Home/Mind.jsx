@@ -1,38 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-function Mind() {
+function Mind({restaurant}) {
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
-    if (slide == 1.5) return false;
+    if (slide === 1.5) return false;
     setSlide(slide +.5);
   };
 
   const prevSlide = () => {
-    if (slide == 0) return false;
+    if (slide === 0) return false;
     setSlide(slide - 0.5);
   };
 
-  const [data, setdata] = useState([]);
-
-  async function fetchData() {
-    const data = await fetch(
-      "/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const result = await data.json();
-    // console.log(
-    //   result?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
-    // );
-    setdata(
-      result?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
-    );
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   return (
     <div className="container flex mb-5 mt-4">
@@ -77,8 +60,8 @@ function Mind() {
           style={{ transform: `translateX(-${slide * 100}%)` }}
         >
           {
-            data.map((item)=>(
-              <Link ><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`}></img></Link>
+            restaurant.map((item)=>(
+              <Link to={"/demo"} ><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`} alt="no"></img></Link>
             ))
           }
         </div>

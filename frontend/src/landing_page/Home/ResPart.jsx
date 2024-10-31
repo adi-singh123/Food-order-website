@@ -1,41 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { MdStars } from "react-icons/md";
-import { Link } from "react-router-dom";
-// import "./Home.css";
+import React, { useState } from "react";
 
-function ResPart() {
+
+
+function ResPart({datares}) {
   const [slide, setSlide] = useState(0);
-  const [data, setData] = useState([]);
+
 
   const nextSlide = () => {
     if (slide > 3.8) return false;
-    console.log(slide);
+    console.log(slide)
     setSlide(slide + 0.5);
   };
 
   const prevSlide = () => {
-    if (slide == 0) return false;
+    if (slide === 0) return false;
     setSlide(slide - 0.5);
   };
-
-  async function fetchData() {
-    const data = await fetch(
-      "/dapi/restaurants/list/v5?lat=28.65420&lng=77.23730&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const result = await data.json();
-    console.log(
-      result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-    setData(
-      result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants
-    );
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div className="container broder">
@@ -79,13 +59,13 @@ function ResPart() {
           className="menu-row"
           style={{ transform: `translateX(-${slide * 100}%)` }}
         >
-          {data.map((item) => (
+          {datares.map((item) => (
             <div className="img">
               <img
                 src={
                   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
                   item?.info?.cloudinaryImageId
-                }
+                 } alt="no"
               ></img>
               <div className="gradent"></div>
 

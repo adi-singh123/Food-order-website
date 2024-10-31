@@ -4,7 +4,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="col">
+    <div className="col mt-5">
       <div className="container mt-4">
         <div className="row">
           <h1 className="text-center mt-4">
