@@ -1,52 +1,52 @@
-// // Import the Twilio module and initialize the client
-// const twilio = require('twilio');
-// const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
+// // // Import the Twilio module and initialize the client
+// // const twilio = require('twilio');
+// // const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
 
-// // Example function to send an SMS
-// async function sendSMS(to, from, body) {
+// // // Example function to send an SMS
+// // async function sendSMS(to, from, body) {
+// //   try {
+// //     const message = await client.messages.create({
+// //       body, // Message content
+// //       from, // Your Twilio number
+// //       to,   // Recipient's phone number
+// //     });
+
+// //     console.log(`Message sent with SID: ${message.sid}`);
+// //   } catch (error) {
+// //     console.error(`Failed to send message: ${error.message}`);
+// //   }
+// // }
+
+// // // Example usage
+// // sendSMS('+918081158775','+14432735301', 'Achal singh SMS concept os build by Aditya but more concept is not build');
+
+
+// const express = require('express');
+// const twilio = require('twilio');
+// const index = require('./index')
+
+// const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
+// const app = express();
+// app.use(express.json());
+
+// app.post('/send-sms', async (req, res) => {
+//   res.send("index")
+//   const { phoneNumber, message } = req.body;
+
 //   try {
-//     const message = await client.messages.create({
-//       body, // Message content
-//       from, // Your Twilio number
-//       to,   // Recipient's phone number
+//     const response = await client.messages.create({
+//       body: message,
+//       from: '+14432735301', 
+//       to: phoneNumber,
 //     });
 
-//     console.log(`Message sent with SID: ${message.sid}`);
+//     res.status(200).json({ sid: response.sid, message: 'SMS sent successfully!' });
 //   } catch (error) {
-//     console.error(`Failed to send message: ${error.message}`);
+//     res.status(500).json({ error: error.message });
 //   }
-// }
+// });
 
-// // Example usage
-// sendSMS('+918081158775','+14432735301', 'Achal singh SMS concept os build by Aditya but more concept is not build');
-
-
-const express = require('express');
-const twilio = require('twilio');
-const index = require('./index')
-
-const client = twilio('AC4f4b07e550a35a85ee1c9ba4495ff45c', '3975c4667775f068e4affb8e8dd3a630');
-const app = express();
-app.use(express.json());
-
-app.post('/send-sms', async (req, res) => {
-  res.send("index")
-  const { phoneNumber, message } = req.body;
-
-  try {
-    const response = await client.messages.create({
-      body: message,
-      from: '+14432735301', 
-      to: phoneNumber,
-    });
-
-    res.status(200).json({ sid: response.sid, message: 'SMS sent successfully!' });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-});
+// app.listen(3000, () => {
+//   console.log('Server is running on http://localhost:3000');
+// });
 
