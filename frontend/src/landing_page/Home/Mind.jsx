@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
+import MindCart from "./MindCart";
 
 function Mind({restaurant}) {
+ 
+
   const [slide, setSlide] = useState(0);
 
   const nextSlide = () => {
@@ -61,7 +64,7 @@ function Mind({restaurant}) {
         >
           {
             restaurant.map((item)=>(
-              <Link to={"/demo"} ><img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`} alt="no"></img></Link>
+             <MindCart {...item}/>
             ))
           }
         </div>

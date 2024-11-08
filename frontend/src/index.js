@@ -13,7 +13,7 @@ root.render(
     <Navbar />
     <Routes>
       <Route path="/" element={<HomePage />}></Route>
-      <Route path='/demo' element={<Demo/>}></Route>
+      <Route path='/demo/:id' element={<Demo/>}></Route>
     </Routes>
     <Footer />
   </BrowserRouter>
